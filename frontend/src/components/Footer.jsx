@@ -1,0 +1,91 @@
+import React from "react";
+import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { BRAND, LOGO_URL } from "../lib/brand";
+
+export default function Footer() {
+  return (
+    <footer className="bg-navy text-white mt-24" data-testid="site-footer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="md:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-12 w-12 rounded-full overflow-hidden bg-white grid place-items-center">
+                <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-cover object-right" />
+              </div>
+              <div>
+                <div className="font-display font-bold text-lg">{BRAND.name}</div>
+                <div className="text-[11px] uppercase tracking-[0.18em] text-gold font-semibold">
+                  {BRAND.slogan}
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Agence de placement de personnel au Québec. Nous connectons
+              talents et entreprises avec rigueur et dévouement.
+            </p>
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
+              Coordonnées
+            </div>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="text-gold mt-0.5 shrink-0" />
+                <a href={`tel:${BRAND.phone}`} className="text-white/90 hover:text-gold transition" data-testid="footer-phone">
+                  {BRAND.phone}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail size={16} className="text-gold mt-0.5 shrink-0" />
+                <a href={`mailto:${BRAND.email}`} className="text-white/90 hover:text-gold transition break-all" data-testid="footer-email">
+                  {BRAND.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
+                <span className="text-white/90" data-testid="footer-address">{BRAND.address}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
+              Navigation
+            </div>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/" className="text-white/80 hover:text-gold transition">Accueil</a></li>
+              <li><a href="/offres" className="text-white/80 hover:text-gold transition">Offres d'emploi</a></li>
+              <li><a href="/admin" className="text-white/80 hover:text-gold transition">Espace admin</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
+              Conformité
+            </div>
+            <div className="flex items-start gap-3 p-4 border border-white/15 rounded-sm bg-white/5" data-testid="footer-cnesst">
+              <ShieldCheck size={20} className="text-gold shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <div className="text-white/70 text-xs uppercase tracking-wider mb-1">
+                  Permis CNESST
+                </div>
+                <div className="font-display font-bold text-base tracking-wider">
+                  {BRAND.cnesst}
+                </div>
+                <div className="text-xs text-white/60 mt-1">
+                  Agence de placement de personnel
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-white/60">
+          <div>© {new Date().getFullYear()} {BRAND.name}. Tous droits réservés.</div>
+          <div>Site conforme aux normes CNESST du Québec.</div>
+        </div>
+      </div>
+    </footer>
+  );
+}
