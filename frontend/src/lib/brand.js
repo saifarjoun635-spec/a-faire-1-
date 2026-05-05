@@ -1,5 +1,5 @@
 export const LOGO_URL =
-  "https://customer-assets.emergentagent.com/job_254a159b-41b0-4f81-8b74-45e2a5400c47/artifacts/p4ep748o_image.png";
+  "https://customer-assets.emergentagent.com/job_talent-attouna/artifacts/8zwewl64_image.png";
 
 export const BRAND = {
   name: "Attouna Service",

@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-12 w-12 rounded-full overflow-hidden bg-white grid place-items-center">
-                <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-cover object-right" />
+              <div className="h-16 w-16 bg-white rounded-sm grid place-items-center p-1.5">
+                <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain" />
               </div>
               <div>
                 <div className="font-display font-bold text-lg">{BRAND.name}</div>

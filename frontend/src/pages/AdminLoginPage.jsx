@@ -41,10 +41,9 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[var(--admin-bg)] grid place-items-center px-4">
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
-          <div className="h-16 w-16 rounded-full overflow-hidden bg-white ring-1 ring-[var(--border)] shadow-sm mb-3">
-            <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-cover object-right" />
+          <div className="h-24 w-24 bg-white rounded-sm grid place-items-center p-2 ring-1 ring-[var(--border)] shadow-sm mb-3">
+            <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain" />
           </div>
-          <div className="font-display font-bold text-xl text-navy">{BRAND.name}</div>
           <div className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mt-1">
             Espace administrateur
           </div>

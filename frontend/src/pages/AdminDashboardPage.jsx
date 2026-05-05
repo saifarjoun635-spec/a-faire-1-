@@ -94,8 +94,8 @@ export default function AdminDashboardPage() {
       <div className="bg-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3" data-testid="admin-brand">
-            <div className="h-9 w-9 rounded-full overflow-hidden bg-white">
-              <img src={LOGO_URL} alt="" className="h-full w-full object-cover object-right" />
+            <div className="h-10 w-10 bg-white rounded-sm grid place-items-center p-1">
+              <img src={LOGO_URL} alt="" className="h-full w-full object-contain" />
             </div>
             <div>
               <div className="font-display font-bold text-sm leading-tight">{BRAND.name}</div>

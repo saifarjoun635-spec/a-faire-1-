@@ -24,14 +24,14 @@ export default function Header() {
             className="flex items-center gap-3 group"
             data-testid="brand-home-link"
           >
-            <div className="h-12 w-12 rounded-full overflow-hidden bg-white ring-1 ring-[var(--border)] shadow-sm grid place-items-center">
+            <div className="h-14 w-14 bg-white rounded-sm grid place-items-center p-1 ring-1 ring-[var(--border)]">
               <img
                 src={LOGO_URL}
                 alt="Attouna Service"
-                className="h-full w-full object-cover object-right"
+                className="h-full w-full object-contain"
               />
             </div>
-            <div className="leading-tight">
+            <div className="leading-tight hidden sm:block">
               <div className="font-display font-bold text-lg text-navy tracking-tight">
                 {BRAND.name}
               </div>
