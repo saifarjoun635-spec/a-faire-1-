@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -37,6 +37,16 @@ export default function ApplicationDialog({ open, onOpenChange, defaultSector, j
   const [cv, setCv] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  // Sync sector when the dialog is opened from a sector-specific entry point
+  useEffect(() => {
+    if (open) {
+      setForm((f) => ({
+        ...f,
+        sector: defaultSector || f.sector || "",
+      }));
+    }
+  }, [open, defaultSector]);
 
   const reset = () => {
     setForm({ ...EMPTY, sector: defaultSector || "" });
