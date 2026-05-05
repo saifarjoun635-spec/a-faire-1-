@@ -1,0 +1,122 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 5: Jewel & Luxury (Corporate Professional Adaptation)",
+  "brand": {
+    "name": "Attouna Service",
+    "slogan": "Votre talent, notre priorité",
+    "phone": "514-232-4251",
+    "email": "attounaservice@yahoo.com",
+    "address": "9950 Place de l'Acadie, Montréal, Qc",
+    "cnesst": "AP-2604802"
+  },
+  "colors": {
+    "primary": {
+      "DEFAULT": "#1a2f5a",
+      "hover": "#111e38",
+      "light": "#2a4b8d"
+    },
+    "accent": {
+      "DEFAULT": "#c9a84c",
+      "hover": "#a68835"
+    },
+    "background": {
+      "DEFAULT": "#f8fafc",
+      "surface": "#ffffff",
+      "admin_bg": "#f1f5f9"
+    },
+    "text": {
+      "primary": "#0f172a",
+      "secondary": "#475569",
+      "inverse": "#ffffff",
+      "navy": "#1a2f5a"
+    },
+    "border": "#e2e8f0"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Cabinet Grotesk, sans-serif",
+      "body": "Manrope, sans-serif"
+    },
+    "scales": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-bold text-navy",
+      "h2": "text-3xl sm:text-4xl tracking-tight font-semibold text-navy",
+      "h3": "text-xl sm:text-2xl font-medium text-navy",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed text-secondary",
+      "small": "text-sm text-secondary uppercase tracking-[0.1em]"
+    }
+  },
+  "layout_and_spacing": {
+    "section_padding": "py-20 md:py-32 px-4 sm:px-6 lg:px-8",
+    "container": "max-w-7xl mx-auto",
+    "border_radius": "rounded-none md:rounded-sm",
+    "shadows": {
+      "card": "shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow duration-300",
+      "glass": "shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+    }
+  },
+  "surfaces": {
+    "header": "sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-border transition-all duration-300",
+    "footer": "bg-primary text-white py-16",
+    "cards": "bg-white border border-border p-6 md:p-8 rounded-sm hover:-translate-y-1 transition-transform duration-300"
+  },
+  "media": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_254a159b-41b0-4f81-8b74-45e2a5400c47/artifacts/p4ep748o_image.png",
+      "description": "Attouna Service Logo (Navy and Gold)"
+    },
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/12306417/pexels-photo-12306417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Elegant and smooth dark blue wave pattern for hero section overlay"
+    },
+    "about_presentation": {
+      "url": "https://images.unsplash.com/photo-1758518727077-ffb66ffccced?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHBlb3BsZSUyMG1vZGVybiUyMG9mZmljZSUyMG1lZXRpbmd8ZW58MHx8fHwxNzc4MDExODM0fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Business people in a modern office meeting, representing professional placement"
+    },
+    "sectors": {
+      "warehouse": {
+        "url": "https://images.unsplash.com/photo-1687203920859-c87cb0955630?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwyfHxmb3JrbGlmdCUyMG9wZXJhdG9yJTIwd2FyZWhvdXNlJTIwd29ya2VyfGVufDB8fHx8MTc3ODAxMTgzNHww&ixlib=rb-4.1.0&q=85",
+        "description": "Warehouse forklift worker"
+      },
+      "landscaping": {
+        "url": "https://images.unsplash.com/photo-1627740283098-1c544d3a479d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxsYW5kc2NhcGVyJTIwY3V0dGluZyUyMGdyYXNzJTIwb3V0ZG9vcnN8ZW58MHx8fHwxNzc4MDExODM0fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Landscaper cutting grass outdoors"
+      },
+      "hotel_service": {
+        "url": "https://images.unsplash.com/photo-1621891336682-341097be99cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxob3RlbCUyMG1haWQlMjBtYWtpbmclMjBiZWQlMjByb29tJTIwc2VydmljZXxlbnwwfHx8fDE3NzgwMTE4MzR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Hotel maid in a room"
+      }
+    }
+  },
+  "component_instructions": {
+    "public_pages": {
+      "approach": "Use pure HTML/Tailwind for layouts. Avoid using Shadcn 'Card' for structural layout sections.",
+      "hero_section": "Use the hero_background image with a dark navy overlay (bg-[#1a2f5a]/80) so white and gold text stands out perfectly. Include primary H1, slogan, and a Gold CTA.",
+      "job_offers_section": "Divide into 3 distinct sections using a CSS Grid or Flex layout. Use the provided sector images. For the 'Postuler' action, use a customized Shadcn Dialog/Drawer with the application form inside.",
+      "application_form": "Use Shadcn Form, Input, Select, and Textarea components. Required fields: Prénom, Nom, Courriel, Téléphone, Secteur visé, Lettre de motivation, CV (File input for PDF). Show a clear success message upon submission using Sonner toast.",
+      "buttons": "Primary buttons: bg-accent text-white hover:bg-accent-hover. Secondary: border-2 border-primary text-primary hover:bg-primary hover:text-white. Always use transitions.",
+      "icons": "Use lucide-react for all icons."
+    },
+    "admin_dashboard": {
+      "approach": "Fully utilize Shadcn UI components (Table, Button, Tabs, Dialog, Form, Input).",
+      "layout": "Sidebar navigation (Offres, Candidatures) with a top header. Background should be slightly off-white (bg-slate-50) to contrast with white widgets.",
+      "auth": "Simple password-protected login screen. Use a centered Shadcn Card.",
+      "job_management": "CRUD table for job offers. Must be able to select sector (Entrepôt, Paysagerie, Hôtelier).",
+      "applications_view": "Table listing all candidates with their details. Include a prominent 'Télécharger CV' action for each row."
+    }
+  },
+  "testing": {
+    "test_ids": {
+      "nav_home": "nav-home-link",
+      "nav_jobs": "nav-jobs-link",
+      "nav_admin": "nav-admin-link",
+      "hero_cta": "hero-apply-btn",
+      "job_card_apply": "job-{id}-apply-btn",
+      "form_submit": "application-submit-btn",
+      "admin_login": "admin-login-btn",
+      "admin_job_add": "admin-job-add-btn",
+      "admin_job_delete": "admin-job-delete-btn",
+      "admin_cv_download": "admin-cv-download-btn"
+    }
+  }
+}
