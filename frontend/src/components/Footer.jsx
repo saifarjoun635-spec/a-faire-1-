@@ -10,9 +10,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-16 w-16 bg-white rounded-sm grid place-items-center p-1.5">
-                <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain" />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-20 w-20 bg-white rounded-sm overflow-hidden flex items-center justify-center">
+                <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain scale-[1.6]" />
               </div>
               <div>
                 <div className="font-display font-bold text-lg">{BRAND.name}</div>

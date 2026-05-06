@@ -35,10 +35,14 @@ export default function Header() {
       data-testid="site-header"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-24 gap-4">
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="brand-home-link">
-            <div className="h-14 w-14 bg-white rounded-sm grid place-items-center p-1 ring-1 ring-[var(--border)]">
-              <img src={LOGO_URL} alt="Attouna Service" className="h-full w-full object-contain" />
+            <div className="h-20 w-20 overflow-hidden flex items-center justify-center">
+              <img
+                src={LOGO_URL}
+                alt="Attouna Service"
+                className="h-full w-full object-contain scale-[1.6]"
+              />
             </div>
           </Link>
 
