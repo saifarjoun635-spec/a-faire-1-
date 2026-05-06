@@ -10,40 +10,14 @@ export const BRAND = {
   cnesst: "AP-2604802",
 };
 
-export const SECTORS = [
-  {
-    key: "entrepot",
-    label: "Travail en entrepôt",
-    short: "Entrepôt",
-    icon: "Warehouse",
-    description:
-      "Cariste, manutentionnaire, préparation de commandes, emballage et expédition.",
-    image:
-      "https://images.unsplash.com/photo-1687203920859-c87cb0955630?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
-  },
-  {
-    key: "paysagerie",
-    label: "Entretien extérieur / Paysagerie",
-    short: "Paysagerie",
-    icon: "Trees",
-    description:
-      "Tonte, taille, aménagement paysager, déneigement et entretien saisonnier.",
-    image:
-      "https://images.unsplash.com/photo-1627740283098-1c544d3a479d?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
-  },
-  {
-    key: "hotelier",
-    label: "Service hôtelier",
-    short: "Hôtelier",
-    icon: "BedDouble",
-    description:
-      "Préposé·e aux chambres, entretien ménager, accueil et service en salle.",
-    image:
-      "https://images.unsplash.com/photo-1621891336682-341097be99cd?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
-  },
-];
+// Sectors keys + image URL only — labels/descriptions come from i18n.
+export const SECTOR_KEYS = ["entrepot", "paysagerie", "hotelier"];
 
-export const SECTOR_MAP = SECTORS.reduce((acc, s) => {
-  acc[s.key] = s;
-  return acc;
-}, {});
+export const SECTOR_IMAGES = {
+  entrepot:
+    "https://images.unsplash.com/photo-1687203920859-c87cb0955630?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
+  paysagerie:
+    "https://images.unsplash.com/photo-1627740283098-1c544d3a479d?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
+  hotelier:
+    "https://images.unsplash.com/photo-1621891336682-341097be99cd?crop=entropy&cs=srgb&fm=jpg&w=1200&q=80",
+};

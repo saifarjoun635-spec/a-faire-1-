@@ -4,6 +4,7 @@ import {
   LogOut,
   Briefcase,
   Users,
+  Building2,
   Plus,
   Pencil,
   Trash2,
@@ -62,7 +63,8 @@ import {
 } from "../components/ui/select";
 import { useAuth } from "../lib/auth";
 import api, { formatApiError, API } from "../lib/api";
-import { BRAND, LOGO_URL, SECTORS, SECTOR_MAP } from "../lib/brand";
+import { BRAND, LOGO_URL, SECTOR_KEYS } from "../lib/brand";
+import { useT } from "../lib/i18n";
 
 const EMPTY_JOB = {
   title: "",
@@ -75,6 +77,7 @@ const EMPTY_JOB = {
 
 export default function AdminDashboardPage() {
   const { user, checking, logout } = useAuth();
+  const { t } = useT();
   const location = useLocation();
 
   if (checking) {
@@ -90,7 +93,6 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="min-h-screen bg-[var(--admin-bg)]">
-      {/* Top bar */}
       <div className="bg-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3" data-testid="admin-brand">
@@ -99,7 +101,7 @@ export default function AdminDashboardPage() {
             </div>
             <div>
               <div className="font-display font-bold text-sm leading-tight">{BRAND.name}</div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-gold">Tableau de bord</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-gold">Admin</div>
             </div>
           </Link>
           <div className="flex items-center gap-4 text-sm">
@@ -111,7 +113,7 @@ export default function AdminDashboardPage() {
               onClick={logout}
               data-testid="admin-logout-btn"
             >
-              <LogOut size={14} className="mr-2" /> Déconnexion
+              <LogOut size={14} className="mr-2" /> {t("admin.logout")}
             </Button>
           </div>
         </div>
@@ -119,19 +121,20 @@ export default function AdminDashboardPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="mb-8">
-          <h1 className="font-display text-3xl font-bold text-navy">Bienvenue</h1>
-          <p className="text-sm text-[var(--text-secondary)] mt-1">
-            Gérez les offres d'emploi et consultez les candidatures reçues.
-          </p>
+          <h1 className="font-display text-3xl font-bold text-navy">{t("admin.welcome")}</h1>
+          <p className="text-sm text-[var(--text-secondary)] mt-1">{t("admin.subtitle")}</p>
         </div>
 
         <Tabs defaultValue="jobs" className="space-y-6">
           <TabsList className="bg-white border border-[var(--border)] p-1">
             <TabsTrigger value="jobs" data-testid="tab-jobs" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
-              <Briefcase size={14} className="mr-2" /> Offres d'emploi
+              <Briefcase size={14} className="mr-2" /> {t("admin.tab.jobs")}
             </TabsTrigger>
             <TabsTrigger value="applications" data-testid="tab-applications" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
-              <Users size={14} className="mr-2" /> Candidatures
+              <Users size={14} className="mr-2" /> {t("admin.tab.applications")}
+            </TabsTrigger>
+            <TabsTrigger value="employers" data-testid="tab-employers" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
+              <Building2 size={14} className="mr-2" /> {t("admin.tab.employers")}
             </TabsTrigger>
           </TabsList>
 
@@ -141,6 +144,9 @@ export default function AdminDashboardPage() {
           <TabsContent value="applications">
             <ApplicationsManager />
           </TabsContent>
+          <TabsContent value="employers">
+            <EmployersManager />
+          </TabsContent>
         </Tabs>
       </main>
     </div>
@@ -149,6 +155,7 @@ export default function AdminDashboardPage() {
 
 /* ---------------- Jobs Manager ---------------- */
 function JobsManager() {
+  const { t } = useT();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -163,15 +170,13 @@ function JobsManager() {
       const { data } = await api.get("/jobs/all");
       setJobs(data);
     } catch (e) {
-      toast.error(formatApiError(e.response?.data?.detail, "Chargement échoué."));
+      toast.error(formatApiError(e.response?.data?.detail));
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    load();
-  }, []);
+  useEffect(() => { load(); }, []);
 
   const openCreate = () => {
     setEditing(null);
@@ -206,7 +211,7 @@ function JobsManager() {
       setDialogOpen(false);
       await load();
     } catch (e) {
-      toast.error(formatApiError(e.response?.data?.detail, "Enregistrement échoué."));
+      toast.error(formatApiError(e.response?.data?.detail));
     } finally {
       setSaving(false);
     }
@@ -220,7 +225,7 @@ function JobsManager() {
       setToDelete(null);
       await load();
     } catch (e) {
-      toast.error(formatApiError(e.response?.data?.detail, "Suppression échouée."));
+      toast.error(formatApiError(e.response?.data?.detail));
     }
   };
 
@@ -228,9 +233,9 @@ function JobsManager() {
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-display text-xl font-semibold text-navy">Offres d'emploi</h2>
+          <h2 className="font-display text-xl font-semibold text-navy">{t("admin.tab.jobs")}</h2>
           <p className="text-sm text-[var(--text-secondary)]">
-            {jobs.length} offre{jobs.length > 1 ? "s" : ""} au total
+            {jobs.length} {jobs.length > 1 ? "offres" : "offre"}
           </p>
         </div>
         <Button className="btn-gold" onClick={openCreate} data-testid="admin-job-add-btn">
@@ -263,7 +268,7 @@ function JobsManager() {
                   <TableCell className="font-medium text-navy max-w-xs truncate">{j.title}</TableCell>
                   <TableCell>
                     <Badge variant="outline" className="border-gold text-gold font-medium">
-                      {SECTOR_MAP[j.sector]?.short || j.sector}
+                      {t(`sectors.${j.sector}.short`)}
                     </Badge>
                   </TableCell>
                   <TableCell>{j.job_type}</TableCell>
@@ -290,7 +295,6 @@ function JobsManager() {
         )}
       </div>
 
-      {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-xl" data-testid="admin-job-dialog">
           <DialogHeader>
@@ -304,12 +308,7 @@ function JobsManager() {
           <form onSubmit={save} className="space-y-4">
             <div>
               <Label>Titre *</Label>
-              <Input
-                required
-                value={form.title}
-                onChange={(e) => setForm({ ...form, title: e.target.value })}
-                data-testid="admin-job-title"
-              />
+              <Input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} data-testid="admin-job-title" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -317,56 +316,34 @@ function JobsManager() {
                 <Select value={form.sector} onValueChange={(v) => setForm({ ...form, sector: v })}>
                   <SelectTrigger data-testid="admin-job-sector"><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    {SECTORS.map((s) => (
-                      <SelectItem key={s.key} value={s.key}>{s.label}</SelectItem>
+                    {SECTOR_KEYS.map((k) => (
+                      <SelectItem key={k} value={k}>{t(`sectors.${k}.label`)}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
               <div>
                 <Label>Type de poste *</Label>
-                <Input
-                  required
-                  value={form.job_type}
-                  onChange={(e) => setForm({ ...form, job_type: e.target.value })}
-                  data-testid="admin-job-type"
-                />
+                <Input required value={form.job_type} onChange={(e) => setForm({ ...form, job_type: e.target.value })} data-testid="admin-job-type" />
               </div>
             </div>
             <div>
               <Label>Lieu *</Label>
-              <Input
-                required
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                data-testid="admin-job-location"
-              />
+              <Input required value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} data-testid="admin-job-location" />
             </div>
             <div>
               <Label>Description *</Label>
-              <Textarea
-                required
-                rows={5}
-                value={form.description}
-                onChange={(e) => setForm({ ...form, description: e.target.value })}
-                data-testid="admin-job-description"
-              />
+              <Textarea required rows={5} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} data-testid="admin-job-description" />
             </div>
             <div className="flex items-center justify-between p-3 rounded-sm bg-[var(--admin-bg)]">
               <div>
                 <Label className="mb-0">Offre active</Label>
                 <div className="text-xs text-[var(--text-secondary)]">Visible sur le site public</div>
               </div>
-              <Switch
-                checked={form.is_active}
-                onCheckedChange={(v) => setForm({ ...form, is_active: v })}
-                data-testid="admin-job-active"
-              />
+              <Switch checked={form.is_active} onCheckedChange={(v) => setForm({ ...form, is_active: v })} data-testid="admin-job-active" />
             </div>
             <DialogFooter>
-              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
-                Annuler
-              </Button>
+              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>Annuler</Button>
               <Button type="submit" disabled={saving} className="btn-navy" data-testid="admin-job-save">
                 {saving && <Loader2 className="animate-spin mr-2" size={14} />}
                 {editing ? "Enregistrer" : "Créer"}
@@ -376,7 +353,6 @@ function JobsManager() {
         </DialogContent>
       </Dialog>
 
-      {/* Delete Confirm */}
       <AlertDialog open={!!toDelete} onOpenChange={(o) => !o && setToDelete(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -387,9 +363,7 @@ function JobsManager() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700" data-testid="admin-job-delete-confirm">
-              Supprimer
-            </AlertDialogAction>
+            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700" data-testid="admin-job-delete-confirm">Supprimer</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -399,6 +373,7 @@ function JobsManager() {
 
 /* ---------------- Applications Manager ---------------- */
 function ApplicationsManager() {
+  const { t } = useT();
   const [apps, setApps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState(null);
@@ -410,15 +385,12 @@ function ApplicationsManager() {
       const { data } = await api.get("/applications");
       setApps(data);
     } catch (e) {
-      toast.error(formatApiError(e.response?.data?.detail, "Chargement échoué."));
+      toast.error(formatApiError(e.response?.data?.detail));
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    load();
-  }, []);
+  useEffect(() => { load(); }, []);
 
   const downloadCv = async (app) => {
     try {
@@ -426,7 +398,7 @@ function ApplicationsManager() {
       const res = await fetch(`${API}/applications/${app.id}/cv`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (!res.ok) throw new Error("Téléchargement échoué");
+      if (!res.ok) throw new Error("Download failed");
       const blob = await res.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -456,7 +428,7 @@ function ApplicationsManager() {
   return (
     <div className="space-y-5">
       <div>
-        <h2 className="font-display text-xl font-semibold text-navy">Candidatures reçues</h2>
+        <h2 className="font-display text-xl font-semibold text-navy">{t("admin.tab.applications")}</h2>
         <p className="text-sm text-[var(--text-secondary)]">
           {apps.length} candidature{apps.length > 1 ? "s" : ""}
         </p>
@@ -484,9 +456,7 @@ function ApplicationsManager() {
             <TableBody>
               {apps.map((a) => (
                 <TableRow key={a.id} data-testid={`admin-app-row-${a.id}`}>
-                  <TableCell className="font-medium text-navy">
-                    {a.first_name} {a.last_name}
-                  </TableCell>
+                  <TableCell className="font-medium text-navy">{a.first_name} {a.last_name}</TableCell>
                   <TableCell>
                     <div className="text-xs space-y-0.5">
                       <div className="flex items-center gap-1"><Mail size={11} />{a.email}</div>
@@ -494,12 +464,10 @@ function ApplicationsManager() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="border-gold text-gold">
-                      {SECTOR_MAP[a.sector]?.short || a.sector}
-                    </Badge>
+                    <Badge variant="outline" className="border-gold text-gold">{t(`sectors.${a.sector}.short`)}</Badge>
                   </TableCell>
                   <TableCell className="text-sm max-w-xs truncate">
-                    {a.job_title || <span className="text-[var(--text-secondary)] italic">Candidature spontanée</span>}
+                    {a.job_title || <span className="text-[var(--text-secondary)] italic">Spontanée</span>}
                   </TableCell>
                   <TableCell className="text-xs text-[var(--text-secondary)]">
                     {new Date(a.created_at).toLocaleDateString("fr-CA")}
@@ -522,13 +490,10 @@ function ApplicationsManager() {
         )}
       </div>
 
-      {/* View Dialog */}
       <Dialog open={!!view} onOpenChange={(o) => !o && setView(null)}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="admin-app-view">
           <DialogHeader>
-            <DialogTitle className="font-display text-navy">
-              {view?.first_name} {view?.last_name}
-            </DialogTitle>
+            <DialogTitle className="font-display text-navy">{view?.first_name} {view?.last_name}</DialogTitle>
             <DialogDescription>Détail de la candidature</DialogDescription>
           </DialogHeader>
           {view && (
@@ -536,17 +501,13 @@ function ApplicationsManager() {
               <div className="grid grid-cols-2 gap-4">
                 <Info label="Courriel" value={view.email} />
                 <Info label="Téléphone" value={view.phone} />
-                <Info label="Secteur" value={SECTOR_MAP[view.sector]?.label || view.sector} />
+                <Info label="Secteur" value={t(`sectors.${view.sector}.label`)} />
                 <Info label="Poste visé" value={view.job_title || "Candidature spontanée"} />
                 <Info label="Date" value={new Date(view.created_at).toLocaleString("fr-CA")} />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-[var(--text-secondary)] mb-1">
-                  Lettre de motivation
-                </div>
-                <div className="p-4 bg-[var(--admin-bg)] rounded-sm text-sm whitespace-pre-wrap">
-                  {view.cover_letter}
-                </div>
+                <div className="text-xs uppercase tracking-wider text-[var(--text-secondary)] mb-1">Lettre de motivation</div>
+                <div className="p-4 bg-[var(--admin-bg)] rounded-sm text-sm whitespace-pre-wrap">{view.cover_letter}</div>
               </div>
               <div className="flex gap-2">
                 <Button onClick={() => downloadCv(view)} className="btn-gold">
@@ -573,9 +534,169 @@ function ApplicationsManager() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700">
-              Supprimer
-            </AlertDialogAction>
+            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700">Supprimer</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
+  );
+}
+
+/* ---------------- Employer Requests Manager ---------------- */
+function EmployersManager() {
+  const { t } = useT();
+  const [reqs, setReqs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [view, setView] = useState(null);
+  const [toDelete, setToDelete] = useState(null);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      const { data } = await api.get("/employer-requests");
+      setReqs(data);
+    } catch (e) {
+      toast.error(formatApiError(e.response?.data?.detail));
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => { load(); }, []);
+
+  const confirmDelete = async () => {
+    if (!toDelete) return;
+    try {
+      await api.delete(`/employer-requests/${toDelete.id}`);
+      toast.success("Demande supprimée.");
+      setToDelete(null);
+      await load();
+    } catch (e) {
+      toast.error(formatApiError(e.response?.data?.detail));
+    }
+  };
+
+  const sectorLabel = (k) =>
+    k === "autre" ? "Autre" : t(`sectors.${k}.short`);
+
+  return (
+    <div className="space-y-5">
+      <div>
+        <h2 className="font-display text-xl font-semibold text-navy">{t("admin.tab.employers")}</h2>
+        <p className="text-sm text-[var(--text-secondary)]">
+          {reqs.length} demande{reqs.length > 1 ? "s" : ""}
+        </p>
+      </div>
+
+      <div className="bg-white border border-[var(--border)] rounded-sm overflow-hidden">
+        {loading ? (
+          <div className="p-10 flex justify-center"><Loader2 className="animate-spin text-navy" /></div>
+        ) : reqs.length === 0 ? (
+          <div className="p-10 text-center text-sm text-[var(--text-secondary)]">
+            Aucune demande employeur reçue pour le moment.
+          </div>
+        ) : (
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-[var(--admin-bg)]">
+                <TableHead>Entreprise</TableHead>
+                <TableHead>Contact</TableHead>
+                <TableHead>Secteur</TableHead>
+                <TableHead>Postes</TableHead>
+                <TableHead>Urgence</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {reqs.map((r) => (
+                <TableRow key={r.id} data-testid={`admin-emp-row-${r.id}`}>
+                  <TableCell className="font-medium text-navy">{r.company_name}</TableCell>
+                  <TableCell>
+                    <div className="text-xs space-y-0.5">
+                      <div>{r.contact_name}</div>
+                      <div className="flex items-center gap-1 text-[var(--text-secondary)]"><Mail size={11} />{r.email}</div>
+                      <div className="flex items-center gap-1 text-[var(--text-secondary)]"><Phone size={11} />{r.phone}</div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline" className="border-gold text-gold">{sectorLabel(r.sector)}</Badge>
+                  </TableCell>
+                  <TableCell className="text-center font-semibold text-navy">{r.nb_positions}</TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">{t(`employers.form.urgency.${r.urgency}`)}</Badge>
+                  </TableCell>
+                  <TableCell className="text-xs text-[var(--text-secondary)]">
+                    {new Date(r.created_at).toLocaleDateString("fr-CA")}
+                  </TableCell>
+                  <TableCell className="text-right whitespace-nowrap">
+                    <Button variant="ghost" size="icon" onClick={() => setView(r)} data-testid={`admin-emp-view-${r.id}`}>
+                      <FileText size={15} />
+                    </Button>
+                    <a href={`mailto:${r.email}`} className="inline-block">
+                      <Button variant="ghost" size="icon">
+                        <Mail size={15} className="text-gold" />
+                      </Button>
+                    </a>
+                    <Button variant="ghost" size="icon" onClick={() => setToDelete(r)} data-testid={`admin-emp-delete-${r.id}`}>
+                      <Trash2 size={15} className="text-red-600" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
+      </div>
+
+      <Dialog open={!!view} onOpenChange={(o) => !o && setView(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="admin-emp-view">
+          <DialogHeader>
+            <DialogTitle className="font-display text-navy">{view?.company_name}</DialogTitle>
+            <DialogDescription>Détail de la demande employeur</DialogDescription>
+          </DialogHeader>
+          {view && (
+            <div className="space-y-4 text-sm">
+              <div className="grid grid-cols-2 gap-4">
+                <Info label="Personne-ressource" value={view.contact_name} />
+                <Info label="Courriel" value={view.email} />
+                <Info label="Téléphone" value={view.phone} />
+                <Info label="Secteur" value={sectorLabel(view.sector)} />
+                <Info label="Nombre de postes" value={view.nb_positions} />
+                <Info label="Urgence" value={t(`employers.form.urgency.${view.urgency}`)} />
+                <Info label="Date" value={new Date(view.created_at).toLocaleString("fr-CA")} />
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-wider text-[var(--text-secondary)] mb-1">Description du besoin</div>
+                <div className="p-4 bg-[var(--admin-bg)] rounded-sm text-sm whitespace-pre-wrap">{view.description}</div>
+              </div>
+              <div className="flex gap-2">
+                <a href={`mailto:${view.email}`} className="inline-flex">
+                  <Button className="btn-gold">
+                    <Mail size={14} className="mr-2" /> Répondre par courriel
+                  </Button>
+                </a>
+                <a href={`tel:${view.phone}`} className="inline-flex">
+                  <Button variant="outline">
+                    <Phone size={14} className="mr-2" /> Appeler
+                  </Button>
+                </a>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <AlertDialog open={!!toDelete} onOpenChange={(o) => !o && setToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Supprimer cette demande ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              La demande de {toDelete?.company_name} sera définitivement supprimée.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete} className="bg-red-600 hover:bg-red-700">Supprimer</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

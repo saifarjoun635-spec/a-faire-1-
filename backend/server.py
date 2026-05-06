@@ -98,6 +98,23 @@ class ApplicationOut(BaseModel):
     created_at: str
 
 
+class EmployerRequestCreate(BaseModel):
+    company_name: str = Field(..., min_length=1, max_length=200)
+    contact_name: str = Field(..., min_length=1, max_length=200)
+    email: EmailStr
+    phone: str = Field(..., min_length=1, max_length=50)
+    sector: Literal["entrepot", "paysagerie", "hotelier", "autre"]
+    nb_positions: int = Field(..., ge=1, le=999)
+    urgency: Literal["immediate", "1-2_semaines", "1_mois", "flexible"]
+    description: str = Field(..., min_length=1)
+
+
+class EmployerRequest(EmployerRequestCreate):
+    id: str
+    created_at: str
+    status: str = "new"
+
+
 # --- Auth helpers ---
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
@@ -308,6 +325,32 @@ async def delete_application(app_id: str, admin: dict = Depends(get_current_admi
     return {"success": True}
 
 
+# --- Routes: Employer Requests ---
+@api_router.post("/employer-requests", response_model=EmployerRequest)
+async def create_employer_request(payload: EmployerRequestCreate):
+    doc = payload.model_dump()
+    doc["id"] = str(uuid.uuid4())
+    doc["created_at"] = datetime.now(timezone.utc).isoformat()
+    doc["status"] = "new"
+    await db.employer_requests.insert_one(doc.copy())
+    doc.pop("_id", None)
+    return doc
+
+
+@api_router.get("/employer-requests", response_model=List[EmployerRequest])
+async def list_employer_requests(admin: dict = Depends(get_current_admin)):
+    docs = await db.employer_requests.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return docs
+
+
+@api_router.delete("/employer-requests/{req_id}")
+async def delete_employer_request(req_id: str, admin: dict = Depends(get_current_admin)):
+    result = await db.employer_requests.delete_one({"id": req_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Demande introuvable")
+    return {"success": True}
+
+
 # --- Health ---
 @api_router.get("/")
 async def root():
@@ -322,6 +365,7 @@ async def startup():
     await db.jobs.create_index("sector")
     await db.jobs.create_index("created_at")
     await db.applications.create_index("created_at")
+    await db.employer_requests.create_index("created_at")
 
     # Seed admin
     existing = await db.users.find_one({"email": ADMIN_EMAIL.lower()})

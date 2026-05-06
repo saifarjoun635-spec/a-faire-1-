@@ -1,8 +1,10 @@
 import React from "react";
 import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { BRAND, LOGO_URL } from "../lib/brand";
+import { useT } from "../lib/i18n";
 
 export default function Footer() {
+  const { t } = useT();
   return (
     <footer className="bg-navy text-white mt-24" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -19,15 +21,12 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Agence de placement de personnel au Québec. Nous connectons
-              talents et entreprises avec rigueur et dévouement.
-            </p>
+            <p className="text-sm text-white/70 leading-relaxed">{t("footer.about")}</p>
           </div>
 
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
-              Coordonnées
+              {t("footer.coords")}
             </div>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
@@ -51,30 +50,34 @@ export default function Footer() {
 
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
-              Navigation
+              {t("footer.nav")}
             </div>
             <ul className="space-y-2 text-sm">
-              <li><a href="/" className="text-white/80 hover:text-gold transition">Accueil</a></li>
-              <li><a href="/offres" className="text-white/80 hover:text-gold transition">Offres d'emploi</a></li>
-              <li><a href="/admin" className="text-white/80 hover:text-gold transition">Espace admin</a></li>
+              <li><a href="/" className="text-white/80 hover:text-gold transition">{t("nav.home")}</a></li>
+              <li><a href="/offres" className="text-white/80 hover:text-gold transition">{t("nav.jobs")}</a></li>
+              <li><a href="/employeurs" className="text-white/80 hover:text-gold transition">{t("nav.employers")}</a></li>
+              <li><a href="/blog" className="text-white/80 hover:text-gold transition">{t("nav.blog")}</a></li>
+              <li><a href="/#apropos" className="text-white/80 hover:text-gold transition">{t("nav.about")}</a></li>
+              <li><a href="/#contact" className="text-white/80 hover:text-gold transition">{t("nav.contact")}</a></li>
+              <li><a href="/conditions" className="text-white/80 hover:text-gold transition">{t("terms.title")}</a></li>
             </ul>
           </div>
 
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4">
-              Conformité
+              {t("footer.compliance")}
             </div>
             <div className="flex items-start gap-3 p-4 border border-white/15 rounded-sm bg-white/5" data-testid="footer-cnesst">
               <ShieldCheck size={20} className="text-gold shrink-0 mt-0.5" />
               <div className="text-sm">
                 <div className="text-white/70 text-xs uppercase tracking-wider mb-1">
-                  Permis CNESST
+                  {t("footer.permit")}
                 </div>
                 <div className="font-display font-bold text-base tracking-wider">
                   {BRAND.cnesst}
                 </div>
                 <div className="text-xs text-white/60 mt-1">
-                  Agence de placement de personnel
+                  {t("footer.permitSub")}
                 </div>
               </div>
             </div>
@@ -82,8 +85,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-white/60">
-          <div>© {new Date().getFullYear()} {BRAND.name}. Tous droits réservés.</div>
-          <div>Site conforme aux normes CNESST du Québec.</div>
+          <div>© {new Date().getFullYear()} {BRAND.name}. {t("footer.rights")}</div>
+          <div>{t("footer.compliant")}</div>
         </div>
       </div>
     </footer>

@@ -248,8 +248,133 @@ class TestApplications:
         assert r.status_code == 401
 
 
+# --- Employer Requests ---
+class TestEmployerRequests:
+    created_ids = []
+
+    def test_create_employer_request_valid(self, session):
+        payload = {
+            "company_name": "TEST_Acme Logistique",
+            "contact_name": "TEST_Marie Tremblay",
+            "email": "TEST_emp@example.com",
+            "phone": "514-555-7777",
+            "sector": "entrepot",
+            "nb_positions": 3,
+            "urgency": "1-2_semaines",
+            "description": "Nous cherchons des opérateurs de chariot élévateur.",
+        }
+        r = session.post(f"{API}/employer-requests", json=payload)
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert body["company_name"] == payload["company_name"]
+        assert body["sector"] == "entrepot"
+        assert body["nb_positions"] == 3
+        assert body["urgency"] == "1-2_semaines"
+        assert body["status"] == "new"
+        assert "id" in body and "created_at" in body
+        assert "_id" not in body
+        TestEmployerRequests.created_ids.append(body["id"])
+
+    def test_create_employer_request_sector_autre(self, session):
+        payload = {
+            "company_name": "TEST_Other",
+            "contact_name": "TEST_Contact",
+            "email": "TEST_other@example.com",
+            "phone": "5145550000",
+            "sector": "autre",
+            "nb_positions": 1,
+            "urgency": "flexible",
+            "description": "Besoin divers.",
+        }
+        r = session.post(f"{API}/employer-requests", json=payload)
+        assert r.status_code == 200
+        TestEmployerRequests.created_ids.append(r.json()["id"])
+
+    def test_create_employer_request_invalid_sector(self, session):
+        payload = {
+            "company_name": "TEST_Bad",
+            "contact_name": "X",
+            "email": "x@y.com",
+            "phone": "1",
+            "sector": "INVALID_SECTOR",
+            "nb_positions": 1,
+            "urgency": "flexible",
+            "description": "x",
+        }
+        r = session.post(f"{API}/employer-requests", json=payload)
+        assert r.status_code == 422
+
+    def test_create_employer_request_invalid_urgency(self, session):
+        payload = {
+            "company_name": "TEST_Bad",
+            "contact_name": "X",
+            "email": "x@y.com",
+            "phone": "1",
+            "sector": "entrepot",
+            "nb_positions": 1,
+            "urgency": "asap",
+            "description": "x",
+        }
+        r = session.post(f"{API}/employer-requests", json=payload)
+        assert r.status_code == 422
+
+    def test_create_employer_request_invalid_nb(self, session):
+        payload = {
+            "company_name": "TEST_Bad",
+            "contact_name": "X",
+            "email": "x@y.com",
+            "phone": "1",
+            "sector": "entrepot",
+            "nb_positions": 0,
+            "urgency": "flexible",
+            "description": "x",
+        }
+        r = session.post(f"{API}/employer-requests", json=payload)
+        assert r.status_code == 422
+
+    def test_list_employer_requests_no_auth(self, session):
+        r = session.get(f"{API}/employer-requests")
+        assert r.status_code == 401
+
+    def test_list_employer_requests_admin(self, session, auth_headers):
+        r = session.get(f"{API}/employer-requests", headers=auth_headers)
+        assert r.status_code == 200
+        items = r.json()
+        assert isinstance(items, list)
+        assert len(items) >= len(TestEmployerRequests.created_ids)
+        for it in items:
+            assert "_id" not in it
+        # verify our created ids present
+        ids_in_list = {it["id"] for it in items}
+        for cid in TestEmployerRequests.created_ids:
+            assert cid in ids_in_list
+
+    def test_delete_employer_request_no_auth(self, session):
+        if not TestEmployerRequests.created_ids:
+            pytest.skip("no req")
+        r = session.delete(f"{API}/employer-requests/{TestEmployerRequests.created_ids[0]}")
+        assert r.status_code == 401
+
+
 # --- Cleanup ---
 class TestZCleanup:
+    def test_delete_employer_requests(self, session, auth_headers):
+        for rid in TestEmployerRequests.created_ids:
+            r = session.delete(f"{API}/employer-requests/{rid}", headers=auth_headers)
+            assert r.status_code == 200
+        # confirm gone
+        if TestEmployerRequests.created_ids:
+            items = session.get(f"{API}/employer-requests", headers=auth_headers).json()
+            for rid in TestEmployerRequests.created_ids:
+                assert all(i["id"] != rid for i in items)
+        # 404 on second delete
+        if TestEmployerRequests.created_ids:
+            r = session.delete(
+                f"{API}/employer-requests/{TestEmployerRequests.created_ids[0]}",
+                headers=auth_headers,
+            )
+            assert r.status_code == 404
+
     def test_delete_application(self, session, auth_headers):
         app_id = TestApplications.created_app_id
         if not app_id:
