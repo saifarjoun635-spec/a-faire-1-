@@ -71,7 +71,7 @@ export const dict = {
 
     // Footer
     "footer.about":
-      "Agence de placement de personnel au Québec. Nous connectons talents et entreprises avec rigueur et dévouement.",
+      "Agence de placement de personnel. Nous connectons talents et entreprises avec rigueur et dévouement.",
     "footer.coords": "Coordonnées",
     "footer.nav": "Navigation",
     "footer.compliance": "Conformité",
@@ -285,7 +285,7 @@ export const dict = {
     "contact.address": "Address",
 
     "footer.about":
-      "Quebec staffing agency. We connect talent and employers with rigor and dedication.",
+      "Staffing agency. We connect talent and employers with rigor and dedication.",
     "footer.coords": "Contact info",
     "footer.nav": "Navigation",
     "footer.compliance": "Compliance",

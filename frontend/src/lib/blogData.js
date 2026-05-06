@@ -119,14 +119,14 @@ export const BLOG_POSTS = [
       fr: [
         "Au Québec, recourir à une agence de placement sans permis CNESST expose l'employeur à des sanctions et, surtout, à des pratiques de recrutement opaques.",
         "**Qu'est-ce que garantit le permis ?** Que l'agence respecte le droit du travail, verse les cotisations dues, ne retient pas indûment les salaires, et traite équitablement ses candidats.",
-        "**Comment vérifier ?** Le registre public des agences est disponible sur `cnesst.gouv.qc.ca/registre`.",
+        "**Comment vérifier ?** Le registre public des agences est disponible sur (cnesst.gouv.qc.ca/registre).",
         "**Le permis d'Attouna Service : AP-2604802.** Il est affiché en pied de page de notre site et vérifiable en tout temps.",
         "Travailler avec une agence certifiée, c'est éliminer un risque juridique et bâtir une relation de long terme.",
       ],
       en: [
         "In Quebec, using a staffing agency without a CNESST permit exposes the employer to sanctions and — more importantly — to opaque hiring practices.",
         "**What does the permit guarantee?** That the agency respects labor law, pays all dues, does not unduly withhold wages, and treats candidates fairly.",
-        "**How to verify?** The public registry is available at `cnesst.gouv.qc.ca/registre`.",
+        "**How to verify?** The public registry is available at (cnesst.gouv.qc.ca/registre).",
         "**Attouna Service permit: AP-2604802.** It is displayed in our site footer and verifiable anytime.",
         "Working with a certified agency eliminates legal risk and builds a long-term relationship.",
       ],
