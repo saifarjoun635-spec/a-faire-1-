@@ -35,9 +35,9 @@ export default function Header() {
       data-testid="site-header"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24 gap-4">
+        <div className="flex items-center justify-between h-32 gap-4">
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="brand-home-link">
-            <div className="h-20 w-20 overflow-hidden flex items-center justify-center">
+            <div className="h-28 w-28 overflow-hidden flex items-center justify-center">
               <img
                 src={LOGO_URL}
                 alt="Attouna Service"
