@@ -127,13 +127,13 @@ export default function AdminDashboardPage() {
 
         <Tabs defaultValue="jobs" className="space-y-6">
           <TabsList className="bg-white border border-[var(--border)] p-1">
-            <TabsTrigger value="jobs" data-testid="tab-jobs" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
+            <TabsTrigger value="jobs" data-testid="tab-jobs" className="data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white px-5">
               <Briefcase size={14} className="mr-2" /> {t("admin.tab.jobs")}
             </TabsTrigger>
-            <TabsTrigger value="applications" data-testid="tab-applications" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
+            <TabsTrigger value="applications" data-testid="tab-applications" className="data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white px-5">
               <Users size={14} className="mr-2" /> {t("admin.tab.applications")}
             </TabsTrigger>
-            <TabsTrigger value="employers" data-testid="tab-employers" className="data-[state=active]:bg-navy data-[state=active]:text-white px-5">
+            <TabsTrigger value="employers" data-testid="tab-employers" className="data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white px-5">
               <Building2 size={14} className="mr-2" /> {t("admin.tab.employers")}
             </TabsTrigger>
           </TabsList>
