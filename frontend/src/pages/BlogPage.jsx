@@ -103,8 +103,8 @@ export function BlogPostPage() {
         <div className="max-w-4xl mx-auto">
           <img src={post.cover} alt="" className="w-full h-[420px] object-cover rounded-sm shadow-lg mb-12" />
           <article className="prose-article max-w-none text-[var(--text)] leading-relaxed space-y-6 text-base">
-            {post.body[lang].map((para, i) => (
-              <Paragraph key={i} text={para} />
+            {post.body[lang].map((para) => (
+              <Paragraph key={`${post.slug}-${lang}-${para.slice(0, 24)}`} text={para} />
             ))}
           </article>
         </div>
@@ -119,10 +119,11 @@ function Paragraph({ text }) {
   return (
     <p>
       {parts.map((part, i) => {
+        const key = `${i}-${part.slice(0, 16)}`;
         if (part.startsWith("**") && part.endsWith("**")) {
-          return <strong key={i} className="font-display text-navy">{part.slice(2, -2)}</strong>;
+          return <strong key={key} className="font-display text-navy">{part.slice(2, -2)}</strong>;
         }
-        return <span key={i}>{part}</span>;
+        return <span key={key}>{part}</span>;
       })}
     </p>
   );

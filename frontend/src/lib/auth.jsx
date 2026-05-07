@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 import api, { formatApiError } from "./api";
 
 const AuthContext = createContext(null);
@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
     loadMe();
   }, [loadMe]);
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     try {
       const { data } = await api.post("/auth/login", { email, password });
       localStorage.setItem("attouna_token", data.access_token);
@@ -41,18 +41,19 @@ export function AuthProvider({ children }) {
         error: formatApiError(e.response?.data?.detail, "Identifiants invalides"),
       };
     }
-  };
+  }, [loadMe]);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem("attouna_token");
     setUser(false);
-  };
+  }, []);
 
-  return (
-    <AuthContext.Provider value={{ user, checking, login, logout, refresh: loadMe }}>
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({ user, checking, login, logout, refresh: loadMe }),
+    [user, checking, login, logout, loadMe]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {

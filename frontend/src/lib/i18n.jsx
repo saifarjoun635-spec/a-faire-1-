@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
 
 const STORAGE_KEY = "attouna_lang";
 
@@ -444,14 +444,18 @@ export function I18nProvider({ children }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const t = (key) => (dict[lang] && dict[lang][key]) || dict.fr[key] || key;
-  const toggle = () => setLang((l) => (l === "fr" ? "en" : "fr"));
-
-  return (
-    <I18nContext.Provider value={{ lang, setLang, toggle, t }}>
-      {children}
-    </I18nContext.Provider>
+  const t = useCallback(
+    (key) => (dict[lang] && dict[lang][key]) || dict.fr[key] || key,
+    [lang]
   );
+  const toggle = useCallback(() => setLang((l) => (l === "fr" ? "en" : "fr")), []);
+
+  const value = useMemo(
+    () => ({ lang, setLang, toggle, t }),
+    [lang, toggle, t]
+  );
+
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
 
 export function useT() {

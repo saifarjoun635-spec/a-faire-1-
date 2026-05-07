@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import {
   LogOut,
@@ -80,6 +80,8 @@ export default function AdminDashboardPage() {
   const { t } = useT();
   const location = useLocation();
 
+  const navigateState = useMemo(() => ({ from: location.pathname }), [location.pathname]);
+
   if (checking) {
     return (
       <div className="min-h-screen grid place-items-center bg-[var(--admin-bg)]">
@@ -88,7 +90,7 @@ export default function AdminDashboardPage() {
     );
   }
   if (!user) {
-    return <Navigate to="/admin/login" state={{ from: location.pathname }} replace />;
+    return <Navigate to="/admin/login" state={navigateState} replace />;
   }
 
   return (
@@ -164,7 +166,7 @@ function JobsManager() {
   const [saving, setSaving] = useState(false);
   const [toDelete, setToDelete] = useState(null);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await api.get("/jobs/all");
@@ -174,9 +176,9 @@ function JobsManager() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); }, [load]);
 
   const openCreate = () => {
     setEditing(null);
@@ -379,7 +381,7 @@ function ApplicationsManager() {
   const [view, setView] = useState(null);
   const [toDelete, setToDelete] = useState(null);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await api.get("/applications");
@@ -389,8 +391,8 @@ function ApplicationsManager() {
     } finally {
       setLoading(false);
     }
-  };
-  useEffect(() => { load(); }, []);
+  }, []);
+  useEffect(() => { load(); }, [load]);
 
   const downloadCv = async (app) => {
     try {
@@ -550,7 +552,7 @@ function EmployersManager() {
   const [view, setView] = useState(null);
   const [toDelete, setToDelete] = useState(null);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     setLoading(true);
     try {
       const { data } = await api.get("/employer-requests");
@@ -560,8 +562,8 @@ function EmployersManager() {
     } finally {
       setLoading(false);
     }
-  };
-  useEffect(() => { load(); }, []);
+  }, []);
+  useEffect(() => { load(); }, [load]);
 
   const confirmDelete = async () => {
     if (!toDelete) return;

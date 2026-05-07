@@ -124,7 +124,7 @@ class TestJobs:
         assert isinstance(items, list)
         for it in items:
             assert "_id" not in it
-            assert it["is_active"] is True
+            assert it["is_active"] == True  # noqa: E712
 
     def test_list_jobs_filter_sector(self, session):
         r = session.get(f"{API}/jobs", params={"sector": "entrepot"})
