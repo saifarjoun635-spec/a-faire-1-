@@ -40,8 +40,8 @@ export default function Header() {
             <div className="h-28 w-28 overflow-hidden flex items-center justify-center">
               <img
                 src={LOGO_URL}
-                alt="Attouna Service"
-                className="h-full w-full object-contain scale-[1.6]"
+                alt="Attouna Services"
+                className="h-full w-full object-contain scale-[1.6] logo-transparent"
               />
             </div>
           </Link>

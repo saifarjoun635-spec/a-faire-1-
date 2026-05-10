@@ -222,3 +222,13 @@ h6,
     height: 0 !important;
     overflow: hidden !important;
 }
+
+/* Logo transparency: white background of logo image blends with light backgrounds */
+.logo-transparent {
+    mix-blend-mode: multiply;
+}
+
+/* On dark (navy) backgrounds, brighten the logo to keep colors readable */
+.logo-on-dark {
+    mix-blend-mode: lighten;
+}

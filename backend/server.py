@@ -37,7 +37,7 @@ client = AsyncIOMotorClient(MONGO_URL)
 db = client[DB_NAME]
 
 # --- App ---
-app = FastAPI(title="Attouna Service API")
+app = FastAPI(title="Attouna Services API")
 api_router = APIRouter(prefix="/api")
 security = HTTPBearer(auto_error=False)
 
@@ -354,7 +354,7 @@ async def delete_employer_request(req_id: str, admin: dict = Depends(get_current
 # --- Health ---
 @api_router.get("/")
 async def root():
-    return {"service": "Attouna Service API", "status": "ok"}
+    return {"service": "Attouna Services API", "status": "ok"}
 
 
 # --- Startup ---

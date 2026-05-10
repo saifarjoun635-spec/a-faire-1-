@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
           <div className="h-72 w-72 overflow-hidden flex items-center justify-center mb-2">
-            <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain scale-[1.6]" />
+            <img src={LOGO_URL} alt="Attouna" className="h-full w-full object-contain scale-[1.6] logo-transparent" />
           </div>
           <div className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold mt-1">
             Espace administrateur

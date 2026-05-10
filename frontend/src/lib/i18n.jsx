@@ -22,7 +22,7 @@ export const dict = {
     "hero.title.1": "Des talents fiables,",
     "hero.title.2": "pour des équipes qui performent.",
     "hero.subtitle":
-      "Attouna Service accompagne les entreprises du Québec dans leur recrutement en entrepôt, paysagerie et service hôtelier. Votre talent, notre priorité.",
+      "Attouna Services accompagne les entreprises du Québec dans leur recrutement en entrepôt, paysagerie et service hôtelier. Votre talent, notre priorité.",
     "hero.cta.jobs": "Voir les offres",
     "hero.cta.spontaneous": "Candidature spontanée",
     "hero.stat.years": "Années d'expertise",
@@ -33,7 +33,7 @@ export const dict = {
     "about.kicker": "À propos",
     "about.title": "Une agence de placement à taille humaine, dévouée à votre réussite.",
     "about.text":
-      "Basée à Montréal, Attouna Service est spécialisée dans le placement de personnel qualifié dans les domaines de l'entrepôt, de la paysagerie et du service hôtelier. Nous combinons rigueur, transparence et engagement pour bâtir des relations durables avec nos clients comme avec nos candidats.",
+      "Basée à Montréal, Attouna Services est spécialisée dans le placement de personnel qualifié dans les domaines de l'entrepôt, de la paysagerie et du service hôtelier. Nous combinons rigueur, transparence et engagement pour bâtir des relations durables avec nos clients comme avec nos candidats.",
     "about.feat.1.t": "Recrutement ciblé",
     "about.feat.1.d": "Des profils sélectionnés pour vos besoins opérationnels.",
     "about.feat.2.t": "Conformité CNESST",
@@ -196,28 +196,28 @@ export const dict = {
     "terms.title": "Conditions d'utilisation",
     "terms.lastUpdated": "Dernière mise à jour",
     "terms.intro":
-      "En accédant à ce site, vous acceptez les présentes conditions d'utilisation. Elles encadrent votre navigation, l'usage des formulaires de candidature et de demande employeur, ainsi que le traitement de vos données personnelles par Attouna Service.",
+      "En accédant à ce site, vous acceptez les présentes conditions d'utilisation. Elles encadrent votre navigation, l'usage des formulaires de candidature et de demande employeur, ainsi que le traitement de vos données personnelles par Attouna Services.",
     "terms.s1.title": "Objet du site",
     "terms.s1.body":
-      "Le site attounaservice.ca a pour objet de présenter les services de placement de personnel d'Attouna Service, de publier des offres d'emploi et de permettre aux candidats et employeurs d'entrer en contact avec l'agence. Les informations publiées sont fournies à titre indicatif.",
+      "Le site attounaservice.ca a pour objet de présenter les services de placement de personnel d'Attouna Services, de publier des offres d'emploi et de permettre aux candidats et employeurs d'entrer en contact avec l'agence. Les informations publiées sont fournies à titre indicatif.",
     "terms.s2.title": "Collecte et usage des données personnelles",
     "terms.s2.body":
-      "Les données transmises via les formulaires (candidature ou demande employeur) sont utilisées exclusivement par Attouna Service pour traiter votre demande. Elles ne sont ni vendues, ni cédées à des tiers. Les CV sont stockés de façon sécurisée et conservés pendant une durée maximale de 24 mois, sauf demande de suppression anticipée.",
+      "Les données transmises via les formulaires (candidature ou demande employeur) sont utilisées exclusivement par Attouna Services pour traiter votre demande. Elles ne sont ni vendues, ni cédées à des tiers. Les CV sont stockés de façon sécurisée et conservés pendant une durée maximale de 24 mois, sauf demande de suppression anticipée.",
     "terms.s3.title": "Droit d'accès, de rectification et de suppression",
     "terms.s3.body":
-      "Conformément aux lois québécoises sur la protection des renseignements personnels, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, écrivez à attounaservice@yahoo.com en précisant l'objet de votre demande.",
+      "Conformément aux lois québécoises sur la protection des renseignements personnels, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit, écrivez à info@attounaservice.ca en précisant l'objet de votre demande.",
     "terms.s4.title": "Propriété intellectuelle",
     "terms.s4.body":
-      "L'ensemble du contenu du site (logos, textes, graphismes, images) est la propriété d'Attouna Service ou de ses partenaires. Toute reproduction, diffusion ou adaptation sans autorisation écrite préalable est interdite.",
+      "L'ensemble du contenu du site (logos, textes, graphismes, images) est la propriété d'Attouna Services ou de ses partenaires. Toute reproduction, diffusion ou adaptation sans autorisation écrite préalable est interdite.",
     "terms.s5.title": "Cookies et statistiques",
     "terms.s5.body":
       "Le site utilise un stockage local (localStorage) pour mémoriser votre préférence de langue (FR/EN) et votre session administrateur. Aucun cookie de traçage publicitaire n'est installé.",
     "terms.s6.title": "Responsabilité",
     "terms.s6.body":
-      "Attouna Service met tout en œuvre pour assurer l'exactitude des informations publiées. Cependant, l'agence ne saurait être tenue responsable d'erreurs, d'omissions ou d'interruptions temporaires du service. L'utilisateur reste seul responsable de l'usage qu'il fait des informations du site.",
+      "Attouna Services met tout en œuvre pour assurer l'exactitude des informations publiées. Cependant, l'agence ne saurait être tenue responsable d'erreurs, d'omissions ou d'interruptions temporaires du service. L'utilisateur reste seul responsable de l'usage qu'il fait des informations du site.",
     "terms.s7.title": "Permis CNESST",
     "terms.s7.body":
-      "Attouna Service est une agence de placement de personnel détentrice du permis CNESST numéro AP-2604802, conformément à la Loi sur les normes du travail du Québec. Ce permis garantit la conformité légale de nos pratiques de recrutement et de placement.",
+      "Attouna Services est une agence de placement de personnel détentrice du permis CNESST numéro AP-2604802, conformément à la Loi sur les normes du travail du Québec. Ce permis garantit la conformité légale de nos pratiques de recrutement et de placement.",
     "terms.s8.title": "Droit applicable",
     "terms.s8.body":
       "Les présentes conditions sont régies par le droit québécois. Tout litige relatif à leur interprétation ou à leur exécution relève de la compétence exclusive des tribunaux de Montréal.",
@@ -240,7 +240,7 @@ export const dict = {
     "hero.title.1": "Reliable talent,",
     "hero.title.2": "for teams that perform.",
     "hero.subtitle":
-      "Attouna Service helps Quebec companies recruit in warehousing, landscaping and hospitality. Your talent, our priority.",
+      "Attouna Services helps Quebec companies recruit in warehousing, landscaping and hospitality. Your talent, our priority.",
     "hero.cta.jobs": "View job offers",
     "hero.cta.spontaneous": "Open application",
     "hero.stat.years": "Years of expertise",
@@ -250,7 +250,7 @@ export const dict = {
     "about.kicker": "About",
     "about.title": "A human-sized staffing agency, devoted to your success.",
     "about.text":
-      "Based in Montreal, Attouna Service specializes in placing qualified personnel in warehousing, landscaping and hospitality. We combine rigor, transparency and commitment to build lasting relationships with our clients and candidates.",
+      "Based in Montreal, Attouna Services specializes in placing qualified personnel in warehousing, landscaping and hospitality. We combine rigor, transparency and commitment to build lasting relationships with our clients and candidates.",
     "about.feat.1.t": "Targeted recruitment",
     "about.feat.1.d": "Profiles selected for your operational needs.",
     "about.feat.2.t": "CNESST compliant",
@@ -402,28 +402,28 @@ export const dict = {
     "terms.title": "Terms of use",
     "terms.lastUpdated": "Last updated",
     "terms.intro":
-      "By accessing this site, you accept these terms of use. They cover your browsing, the use of the application and employer request forms, and the processing of your personal data by Attouna Service.",
+      "By accessing this site, you accept these terms of use. They cover your browsing, the use of the application and employer request forms, and the processing of your personal data by Attouna Services.",
     "terms.s1.title": "Purpose of the site",
     "terms.s1.body":
-      "The attounaservice.ca site presents Attouna Service's staffing services, publishes job offers and lets candidates and employers contact the agency. Information is provided for indicative purposes.",
+      "The attounaservice.ca site presents Attouna Services's staffing services, publishes job offers and lets candidates and employers contact the agency. Information is provided for indicative purposes.",
     "terms.s2.title": "Personal data collection and use",
     "terms.s2.body":
-      "Data submitted via the forms (application or employer request) is used solely by Attouna Service to handle your request. It is not sold or shared with third parties. CVs are stored securely and kept for up to 24 months unless deleted earlier upon request.",
+      "Data submitted via the forms (application or employer request) is used solely by Attouna Services to handle your request. It is not sold or shared with third parties. CVs are stored securely and kept for up to 24 months unless deleted earlier upon request.",
     "terms.s3.title": "Right to access, correct and delete",
     "terms.s3.body":
-      "Under Quebec's privacy laws, you have the right to access, correct and delete your personal data. To exercise this right, write to attounaservice@yahoo.com specifying the purpose of your request.",
+      "Under Quebec's privacy laws, you have the right to access, correct and delete your personal data. To exercise this right, write to info@attounaservice.ca specifying the purpose of your request.",
     "terms.s4.title": "Intellectual property",
     "terms.s4.body":
-      "All site content (logos, text, graphics, images) is the property of Attouna Service or its partners. Any reproduction, distribution or adaptation without prior written permission is prohibited.",
+      "All site content (logos, text, graphics, images) is the property of Attouna Services or its partners. Any reproduction, distribution or adaptation without prior written permission is prohibited.",
     "terms.s5.title": "Cookies and analytics",
     "terms.s5.body":
       "The site uses local storage (localStorage) to remember your language preference (FR/EN) and your admin session. No advertising tracking cookies are installed.",
     "terms.s6.title": "Liability",
     "terms.s6.body":
-      "Attouna Service does its best to ensure information accuracy. However, the agency cannot be held liable for errors, omissions or temporary service interruptions. Users remain solely responsible for how they use the information on the site.",
+      "Attouna Services does its best to ensure information accuracy. However, the agency cannot be held liable for errors, omissions or temporary service interruptions. Users remain solely responsible for how they use the information on the site.",
     "terms.s7.title": "CNESST permit",
     "terms.s7.body":
-      "Attouna Service is a staffing agency holding CNESST permit number AP-2604802, in accordance with Quebec's Labour Standards Act. This permit guarantees legal compliance of our recruitment and placement practices.",
+      "Attouna Services is a staffing agency holding CNESST permit number AP-2604802, in accordance with Quebec's Labour Standards Act. This permit guarantees legal compliance of our recruitment and placement practices.",
     "terms.s8.title": "Applicable law",
     "terms.s8.body":
       "These terms are governed by Quebec law. Any dispute related to their interpretation or execution falls under the exclusive jurisdiction of the courts of Montreal.",

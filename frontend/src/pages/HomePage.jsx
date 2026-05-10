@@ -77,7 +77,7 @@ export default function HomePage() {
 
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-xl">
               {[
-                { label: t("hero.stat.years"), value: "10+" },
+                { label: t("hero.stat.years"), value: "3" },
                 { label: t("hero.stat.sectors"), value: "3" },
                 { label: t("hero.stat.placed"), value: "500+" },
               ].map((s) => (

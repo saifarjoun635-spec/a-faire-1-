@@ -1,4 +1,4 @@
-"""Backend API tests for Attouna Service.
+"""Backend API tests for Attouna Services.
 
 Covers: auth (login/me), jobs CRUD (admin+public), applications (multipart upload,
 list, CV download, delete), and ObjectId leak protection.
