@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Globe2, LogIn } from "lucide-react";
-import { LOGO_URL } from "../lib/brand";
+import { Menu, X, Globe2, LogIn, Facebook } from "lucide-react";
+import { LOGO_URL, BRAND } from "../lib/brand";
 import { useT } from "../lib/i18n";
 
 export default function Header() {
@@ -76,6 +76,16 @@ export default function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a
+              href={BRAND.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="p-2 rounded-sm text-[var(--text-secondary)] hover:text-navy hover:bg-slate-100 transition"
+              data-testid="header-facebook-link"
+            >
+              <Facebook size={16} />
+            </a>
             <button
               onClick={toggle}
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-sm text-xs font-bold tracking-wider border border-[var(--border)] text-navy hover:bg-navy hover:text-white hover:border-navy transition-all"

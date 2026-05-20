@@ -8,6 +8,7 @@ export const BRAND = {
   email: "info@attounaservice.ca",
   address: "9950 Place de l'Acadie, Montréal, Qc",
   cnesst: "AP-2604802",
+  facebook: "https://www.facebook.com/profile.php?id=61590316706247",
 };
 
 // Sectors keys + image URL only — labels/descriptions come from i18n.

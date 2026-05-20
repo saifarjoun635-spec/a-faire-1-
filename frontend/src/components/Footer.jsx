@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, Facebook } from "lucide-react";
 import { BRAND, LOGO_URL } from "../lib/brand";
 import { useT } from "../lib/i18n";
 
@@ -22,6 +22,19 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-white/70 leading-relaxed">{t("footer.about")}</p>
+
+            <div className="mt-5 flex items-center gap-3">
+              <a
+                href={BRAND.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook Attouna Services"
+                className="h-10 w-10 rounded-sm border border-white/20 text-white grid place-items-center hover:bg-gold hover:border-gold hover:text-navy transition-all"
+                data-testid="footer-facebook-link"
+              >
+                <Facebook size={18} />
+              </a>
+            </div>
           </div>
 
           <div>
