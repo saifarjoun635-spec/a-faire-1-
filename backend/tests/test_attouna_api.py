@@ -22,7 +22,7 @@ if not BASE_URL:
 
 API = f"{BASE_URL}/api"
 
-ADMIN_EMAIL = "attounaservice@yahoo.com"
+ADMIN_EMAIL = "info@attounaservices.ca"
 ADMIN_PASSWORD = "Attouna2024!"
 SECTORS = ["entrepot", "paysagerie", "hotelier"]
 

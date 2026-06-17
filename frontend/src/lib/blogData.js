@@ -17,7 +17,7 @@ export const BLOG_POSTS = [
     },
     body: {
       fr: [
-        "L'hiver québécois est une période critique pour les entrepôts : pics de commandes avant les fêtes, conditions de travail plus exigeantes, et main-d'œuvre plus volatile. Chez Attouna Services, nous observons chaque année les mêmes pièges que les gestionnaires voudraient éviter.",
+        "L'hiver est une période critique pour les entrepôts : pics de commandes avant les fêtes, conditions de travail plus exigeantes, et main-d'œuvre plus volatile. Chez Attouna Services, nous observons chaque année les mêmes pièges que les gestionnaires voudraient éviter.",
         "**1. Publiez vos besoins au moins 3 semaines à l'avance.** Les meilleurs candidats ne sont pas disponibles du jour au lendemain.",
         "**2. Offrez un avantage hiver concret.** Prime de fidélisation saisonnière, transport remboursé, casse-croûte chaud : autant de leviers simples qui réduisent le taux de désistement.",
         "**3. Testez la fiabilité.** Un essai d'une journée dit souvent plus qu'un long entretien. Les profils qui tiennent la cadence sur le terrain sont vos meilleurs placements.",
@@ -26,7 +26,7 @@ export const BLOG_POSTS = [
         "En combinant ces cinq leviers, nos clients maintiennent un taux de rétention hivernal supérieur à 85 %.",
       ],
       en: [
-        "Quebec winters are a critical period for warehouses: order peaks before the holidays, harsher working conditions, and a more volatile workforce. At Attouna Services, we see the same pitfalls every year that managers want to avoid.",
+        "Winter is a critical period for warehouses: order peaks before the holidays, harsher working conditions, and a more volatile workforce. At Attouna Services, we see the same pitfalls every year that managers want to avoid.",
         "**1. Post your needs at least 3 weeks in advance.** Top candidates are not available overnight.",
         "**2. Offer a concrete winter perk.** Seasonal retention bonus, reimbursed transit, hot meal vouchers — simple levers that cut no-show rates.",
         "**3. Test reliability.** A one-day trial says more than a long interview. Profiles who hold the pace on the floor are your best placements.",
@@ -48,8 +48,8 @@ export const BLOG_POSTS = [
       en: "Landscaping: 4 reasons to outsource recruitment",
     },
     excerpt: {
-      fr: "La saison verte est courte au Québec. Chaque semaine compte. Voici pourquoi faire appel à une agence spécialisée.",
-      en: "The green season is short in Quebec. Every week matters. Here's why to call a specialized agency.",
+      fr: "La saison verte est courte. Chaque semaine compte. Voici pourquoi faire appel à une agence spécialisée.",
+      en: "The green season is short. Every week matters. Here's why to call a specialized agency.",
     },
     body: {
       fr: [
@@ -117,14 +117,14 @@ export const BLOG_POSTS = [
     },
     body: {
       fr: [
-        "Au Québec, recourir à une agence de placement sans permis CNESST expose l'employeur à des sanctions et, surtout, à des pratiques de recrutement opaques.",
+        "Recourir à une agence de placement sans permis CNESST expose l'employeur à des sanctions et, surtout, à des pratiques de recrutement opaques.",
         "**Qu'est-ce que garantit le permis ?** Que l'agence respecte le droit du travail, verse les cotisations dues, ne retient pas indûment les salaires, et traite équitablement ses candidats.",
         "**Comment vérifier ?** Le registre public des agences est disponible sur (cnesst.gouv.qc.ca/registre).",
         "**Le permis d'Attouna Services : AP-2604802.** Il est affiché en pied de page de notre site et vérifiable en tout temps.",
         "Travailler avec une agence certifiée, c'est éliminer un risque juridique et bâtir une relation de long terme.",
       ],
       en: [
-        "In Quebec, using a staffing agency without a CNESST permit exposes the employer to sanctions and — more importantly — to opaque hiring practices.",
+        "Using a staffing agency without a CNESST permit exposes the employer to sanctions and — more importantly — to opaque hiring practices.",
         "**What does the permit guarantee?** That the agency respects labor law, pays all dues, does not unduly withhold wages, and treats candidates fairly.",
         "**How to verify?** The public registry is available at (cnesst.gouv.qc.ca/registre).",
         "**Attouna Services permit: AP-2604802.** It is displayed in our site footer and verifiable anytime.",

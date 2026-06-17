@@ -1,11 +1,11 @@
 export const LOGO_URL =
-  "https://customer-assets.emergentagent.com/job_talent-attouna/artifacts/hnl1clmq_image.png";
+  "https://customer-assets.emergentagent.com/job_talent-attouna/artifacts/wnxfsj5d_image.png";
 
 export const BRAND = {
   name: "Attouna Services",
   slogan: "Votre talent, notre priorité",
   phone: "514-232-4251",
-  email: "info@attounaservice.ca",
+  email: "info@attounaservices.ca",
   address: "9950 Place de l'Acadie, Montréal, Qc",
   cnesst: "AP-2604802",
   facebook: "https://www.facebook.com/profile.php?id=61590316706247",
